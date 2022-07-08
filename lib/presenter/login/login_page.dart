@@ -14,65 +14,75 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(100),
-        child: Column(
-          children: [
-            const Icon(
-              Icons.person,
-              size: 80,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.06),
-                borderRadius: BorderRadius.circular(50),
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(100),
+          child: Column(
+            children: [
+              const CircleAvatar(
+                radius: 50,
+                child: Icon(
+                  Icons.person,
+                  size: 50,
+                ),
               ),
-              child: TextField(
-                textAlign: TextAlign.center,
-                controller: loginController,
-                decoration: const InputDecoration(
-                    // labelText: 'Coloque seu login',
-                    hintText: 'Coloque seu login',
-                    border: InputBorder.none,
-                    hintStyle:
-                        TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.06),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  controller: loginController,
+                  decoration: const InputDecoration(
+                      // labelText: 'Coloque seu login',
+                      hintText: 'Coloque seu login',
+                      border: InputBorder.none,
+                      hintStyle:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                ),
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16,),
-              decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.06),
-                borderRadius: BorderRadius.circular(50),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.06),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  obscureText: true,
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                      // labelText: 'Coloque seu login',
+                      hintText: 'Coloque sua senha',
+                      border: InputBorder.none,
+                      hintStyle:
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                ),
               ),
-              child: TextField(
-                textAlign: TextAlign.center,
-                obscureText: true,
-                controller: passwordController,
-                decoration: const InputDecoration(
-                    // labelText: 'Coloque seu login',
-                    hintText: 'Coloque sua senha',
-                    border: InputBorder.none,
-                    hintStyle:
-                        TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+              Padding(
+                padding: const EdgeInsets.all(25),
+                child: MaterialButton(
+                  color: Colors.blue.shade700,
+                  height: 50,
+                  onPressed: () {
+                    print(loginController.text);
+                    print(passwordController.text);
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: MaterialButton(
-                height: 50,
-                onPressed: () {
-                  print(loginController.text);
-                  print(passwordController.text);
-                },
-                child: const Icon(Icons.login),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
